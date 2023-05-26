@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+  <header class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <div class="navbar">
+          <div class="navbar-brand">
+            <h1 class="navbar-item title">hire.me</h1>
+            <div class="navbar-burger burger" data-target="navMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="navbar-menu" id="navMenu">
+            <div class="navbar-end">
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Menu</a>
+                <div class="navbar-dropdown">
+                  <a href="#" class="navbar-item">Build your Resume</a>
+                  <a href="#" class="navbar-item">Check out some example portfolios</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-one-third">
+          <h2 class="title">Search</h2>
+          <div class="field">
+            <div class="control">
+              <input type="text" class="input" id="searchInput" placeholder="Enter your search query">
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" onclick="performSearch()">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="title">Results</h2>
+          <div id="searchResults"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var burger = document.querySelector('.burger');
+      var navMenu = document.querySelector('#' + burger.dataset.target);
+      burger.addEventListener('click', function () {
+        burger.classList.toggle('is-active');
+        navMenu.classList.toggle('is-active');
+      });
+    });
+     function toggleDropdown() {
+      var dropdown = document.getElementById('dropdown');
+      dropdown.classList.toggle('is-active');
+    }
+    function performSearch() {
+      var searchInput = document.getElementById('searchInput').value;
+      var searchResults = document.getElementById('searchResults');
+      
+      // Perform search logic here
+      
+      // Example: Display search query in the results section
+      searchResults.innerHTML = "<p>Search results for: " + searchInput + "</p>";
+    }
+  </script>
+</body>
+</html>
