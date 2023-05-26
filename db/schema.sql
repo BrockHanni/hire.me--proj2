@@ -43,7 +43,7 @@ CREATE TABLE resume (
   FOREIGN KEY (personal_information_id) REFERENCES personal_information (id)
 );
 
-CREATE TABLE references (
+CREATE TABLE my_references (
   id INT NOT NULL AUTO_INCREMENT,
   personal_information_id INT NOT NULL,
   name VARCHAR(255) NOT NULL,
