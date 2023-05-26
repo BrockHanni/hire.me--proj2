@@ -17,7 +17,7 @@ CREATE TABLE education (
   id INT NOT NULL AUTO_INCREMENT,
   personal_information_id INT NOT NULL,
   degree VARCHAR(255) NOT NULL,
-  institution VARCHAR(255) NOT NULL,
+  school VARCHAR(255) NOT NULL,
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
   PRIMARY KEY (id),
@@ -55,6 +55,7 @@ CREATE TABLE references (
   FOREIGN KEY (personal_information_id) REFERENCES personal_information (id)
 );
 
+
 CREATE TABLE availability (
   id INT NOT NULL AUTO_INCREMENT,
   personal_information_id INT NOT NULL,
@@ -68,7 +69,7 @@ CREATE TABLE certifications (
   id INT NOT NULL AUTO_INCREMENT,
   personal_information_id INT NOT NULL,
   name VARCHAR(255) NOT NULL,
-  institution VARCHAR(255) NOT NULL,
+  school VARCHAR(255) NOT NULL,
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
   PRIMARY KEY (id),
