@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="has-background-info-light">
+<head>
+  <title>Search App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+  <header class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <div class="navbar">
+          <div class="navbar-brand">
+            <h1 class="navbar-item title is-size-2 has-text-link">hire.me</h1>
+            <p class="navbar-item subtitle is-size-4 has-text-link">Please?</p>
+            <div class="navbar-burger burger" data-target="navMenu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="navbar-menu" id="navMenu">
+            <div class="navbar-end">
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Menu</a>
+                <div class="navbar-dropdown">
+                  <a href="#" class="navbar-item">Build your Resume</a>
+                  <a href="#" class="navbar-item">Check out some example portfolios</a>
+                  <button class="button is-primary is-centered" onclick="logout">Logout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section has-background-info-light">
+    <div class="container">
+      <div class="columns is-mobile is-centered">
+        <div class="column is-one-third">
+          <h2 class="title has-text-centered">Search</h2>
+          <div class="field">
+            <div class="control">
+              <input type="text" class="input" id="searchInput" placeholder="What job are you looking for?">
+            </div>
+          </div>
+          <div class="field is-mobile is-centered">
+            <div class="control is-centered">
+              <button class="button is-primary is-centered" onclick="performSearch()">Search</button>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="title">Results</h2>
+          <div id="searchResults" class="columns is-multiline">
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content has-background-primary-light">
+                  <p class="is-size-4 has-text-centered">Result 1</p>
+                  <p>{{searchResult1}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content has-background-primary-light">
+                  <p class="is-size-4 has-text-centered">Result 2</p>
+                  <p>{{searchResult2}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content has-background-primary-light">
+                  <p class="is-size-4 has-text-centered">Result 3</p>
+                  <p>{{searchResult3}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content has-background-primary-light">
+                  <p class="is-size-4 has-text-centered">Result 4</p>
+                  <p>{{searchResult4}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content has-background-primary-light">
+                  <p class="is-size-4 has-text-centered">Result 5</p>
+                  <p>{{searchResult5}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content has-background-primary-light">
+                  <p class="is-size-4 has-text-centered">Result 6</p>
+                  <p>{{searchResult6}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content has-background-primary-light">
+                  <p class="is-size-4 has-text-centered">Result 7</p>
+                  <p>{{searchResult7}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content has-background-primary-light">
+                  <p class="is-size-4 has-text-centered">Result 8</p>
+                  <p>{{searchResult8}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="card">
+                <div class="card-content has-background-primary-light">
+                  <p class="is-size-4 has-text-centered">Result 9</p>
+                  <p>{{searchResult9}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var burger = document.querySelector('.burger');
+      var navMenu = document.querySelector('#' + burger.dataset.target);
+      burger.addEventListener('click', function () {
+        burger.classList.toggle('is-active');
+        navMenu.classList.toggle('is-active');
+      });
+    });
+    function performSearch() {
+      var searchInput = document.getElementById('searchInput').value;
+      var searchResults = document.getElementById('searchResults');
+      
+      // Perform search logic here
+      
+      // Example: Display search query in the results section
+      searchResults.innerHTML = `
+        <div class="column is-one-third">
+          <div class="card">
+            <div class="card-content">
+              <p>Search result for: ${searchInput}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Repeat the above column for the remaining cards -->
+      `;
+    }
+  </script>
+</body>
+</html>
+
+
+<!-- BLUE has- -info-dark -->
+<!-- GREEN has- -success-dark -->
+<!-- GREY has- -grey-light -->
+
+<!-- hashing passwords orm lessons 15-16 -->
+<!-- day 3 at 50min -->
