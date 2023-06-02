@@ -39,7 +39,8 @@
           <h2 class="title has-text-centered ">Login to your account!</h2>
           <p class="has-text-centered" href="#">Need to create an account?</p>
           <br>
-          <button class="button has-text-centered is-primary">Click Here</button>
+          {{!-- <button class="button has-text-centered is-primary" href="./createAccount.handlebars">Click Here</button> --}}
+          <a class="button has-text-centered is-primary" href="./createAccount.handlebars">Click Here</a>
         </div>
           <div class="field is-centered column is-two-third">
             <div class="control is-centered">
@@ -60,8 +61,6 @@
       </div>
     </div>
   </section>
-
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var burger = document.querySelector('.burger');
@@ -71,6 +70,12 @@
         navMenu.classList.toggle('is-active');
       });
     });
+    function login() {
+      window.location.href = "/searchPage";
+    }
+    function createAccount() {
+      window.location.href = "./createAccount.handlebars";
+    }
   </script>
 </body>
 </html>
