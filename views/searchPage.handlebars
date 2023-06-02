@@ -46,27 +46,11 @@
               <input type="text" class="input" id="location" placeholder="Location?">
               <br>
               <br>
-              <p class="is-size-6 has-text-centered">How far are you willing to commute?<br>(in Miles)</p>
+              <p id="commute" class="is-size-6 has-text-centered">How far are you willing to commute?<br>(in Miles)</p>
               <div class="has-text-centered">
                 <input id="rangeSlider" class="slider has-output-tooltip is-fullwidth is-centered" min="0" max="50" value="25" step="1" type="range">
                 <output for="rangeSlider">25</output>
               </div>
-              <script>
-                function findOutputForSlider(el) {
-                  var idVal = el.id;
-                    outputs = document.getElementsByTagName('output');
-                    for( var i = 0; i < outputs.length; i++ ) {
-                      if (outputs[i].htmlFor == idVal)
-                        return outputs[i];
-                }}
-                var sliders = document.querySelectorAll( 'input[type="range"].slider' );
-                  [].forEach.call( sliders, function ( slider ) {
-                  var output = findOutputForSlider( slider );
-                  if ( output ) {
-                    slider.addEventListener( 'input', function( event ) {
-                      output.value = event.target.value;
-                });}});
-              </script>
               <div class="has-text-centered">
                 <br>
                 <p class="has-text-centered"> Preferred Salary</p>
@@ -172,7 +156,7 @@
   </section>
 
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
       var burger = document.querySelector('.burger');
       var navMenu = document.querySelector('#' + burger.dataset.target);
@@ -200,6 +184,20 @@
       `;
     }
 
+function findOutputForSlider(el) {
+  var idVal = el.id;
+    outputs = document.getElementsByTagName('output');
+    for( var i = 0; i < outputs.length; i++ ) {
+      if (outputs[i].htmlFor == idVal)
+        return outputs[i];
+}}
+var sliders = document.querySelectorAll( 'input[type="range"].slider' );
+  [].forEach.call( sliders, function ( slider ) {
+  var output = findOutputForSlider( slider );
+  if ( output ) {
+    slider.addEventListener( 'input', function( event ) {
+      output.value = event.target.value;
+});}});
   </script>
 </body>
 </html>
