@@ -13,6 +13,10 @@ router.get('/', async (req, res) => {
       ],
     });
 
+    router.get('/searchPage', (req, res) => {
+      res.render('searchPage');
+    });
+
     // Serialize data so the template can read it
     const projects = projectData.map((project) => project.get({ plain: true }));
 

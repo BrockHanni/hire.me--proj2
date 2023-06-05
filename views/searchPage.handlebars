@@ -40,7 +40,7 @@
           <h2 class="title has-text-centered">Search</h2>
           <div class="field">
             <div class="control">
-              <input type="text" class="input" id="jobTitle" placeholder="Job Title?">
+              <input type="text" class="input" id="searchInput" placeholder="Job Title?">
               <br>
               <br>
               <input type="text" class="input" id="location" placeholder="Location?">
@@ -70,7 +70,7 @@
           </div>
           <div class="field is-mobile is-centered">
             <div class="control has-text-centered">
-              <button class="button is-primary has-text-centered" onclick="performSearch()">Search</button>
+              <button class="button is-primary has-text-centered" id="searchButton" onclick="performSearch()">Search</button>
             </div>
           </div>
         </div>
@@ -189,14 +189,17 @@ function findOutputForSlider(el) {
     for( var i = 0; i < outputs.length; i++ ) {
       if (outputs[i].htmlFor == idVal)
         return outputs[i];
-}}
+    }
+  }
 var sliders = document.querySelectorAll( 'input[type="range"].slider' );
   [].forEach.call( sliders, function ( slider ) {
   var output = findOutputForSlider( slider );
   if ( output ) {
     slider.addEventListener( 'input', function( event ) {
       output.value = event.target.value;
-});}});
+    });
+  }
+});
   </script>
 </body>
 </html>
