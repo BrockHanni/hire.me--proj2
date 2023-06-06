@@ -23,7 +23,7 @@
                 <div class="navbar-dropdown">
                   <a href="#" class="navbar-item">Build your Resume</a>
                   <a href="#" class="navbar-item">Check out some example portfolios</a>
-                  <button class="button is-primary is-centered" onclick="logout">Logout</button>
+                  <a class="button has-text-centered is-primary" href="./logout">Logout</a>
                 </div>
               </div>
             </div>
@@ -155,6 +155,7 @@
     </div>
   </section>
 
+<script src="../public/js/login.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
       var burger = document.querySelector('.burger');
@@ -191,6 +192,7 @@ function findOutputForSlider(el) {
         return outputs[i];
     }
   }
+
 var sliders = document.querySelectorAll( 'input[type="range"].slider' );
   [].forEach.call( sliders, function ( slider ) {
   var output = findOutputForSlider( slider );
