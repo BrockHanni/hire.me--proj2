@@ -8,17 +8,21 @@ router.get('/', async (req, res) => {
     const projectData = await Project.findAll({
       include: [
         {
-          model: User,
-          attributes: ['name'],
+          model: User
         },
       ],
+    });
+
+    router.get('/searchPage', (req, res) => {
+      res.render('searchPage');
     });
 
     // Serialize data so the template can read it
     const projects = projectData.map((project) => project.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
+    // change main page below
+    res.render('createAccount', { 
       projects, 
       logged_in: req.session.logged_in 
     });
@@ -33,7 +37,6 @@ router.get('/project/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
         },
       ],
     });
