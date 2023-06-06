@@ -23,7 +23,6 @@
                 <div class="navbar-dropdown has-text-centered is-centered is-primary" style="background-color: hsl(171, 100%, 41%);">
                   <a href="#" class="navbar-item has-text-centered">Build your Resume</a>
                   <a href="#" class="navbar-item has-text-centered">Check out some example portfolios</a>
-                  {{!-- <a class="button has-text-centered is-primary" onclick="logout()">Logout</a> --}}
                 </div>
               </div>
             </div>
@@ -46,15 +45,15 @@
             <div class="control is-centered">
               <h2 class="title has-text-centered ">Login to your account!</h2>
               <p class="is-size-4 has-text-centered">Email</p>
-              <input type="text" class="input" id="searchInput" placeholder="Please enter your email">
+              <input type="text" class="input" id="emailInput" placeholder="Please enter your email">
             </div>
             <div class="control is-center">
               <p class="is-size-4 has-text-centered">Password</p>
-              <input type="text" class="input" id="searchInput" placeholder="Please enter your password">
+              <input type="text" class="input" id="passwordInput" placeholder="Please enter your password">
               <br>
               <br>
                 <div class="has-text-centered">
-                  <button class="button is-primary is-center" onclick="loginFormHandler()">Login</button>
+                  <button class="button is-primary is-center" onclick="loginFormHandler(event)">Login</button>
                 </div>
             </div>
           </div>
@@ -74,9 +73,8 @@
     });
    
     function createAccount() {
-      window.location.href = "./createAccount.handlebars";
+      window.location.href = "./createAccount";
     }
   </script>
-  <script src="./js/login.js"></script>
 </body>
 </html>
