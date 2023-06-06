@@ -15,7 +15,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace('/searchPage');
+      document.location.replace('/profile')
     } else {
       alert(response.statusText);
     }
@@ -36,7 +36,10 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/searchPage');
+      console.log(email, password)
+      document.location.replace('./searchPage.handlebars')
+
+      // broken, need to fix
     } else {
       alert(response.statusText);
     }
