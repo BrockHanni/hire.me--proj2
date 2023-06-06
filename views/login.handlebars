@@ -54,7 +54,7 @@
               <br>
               <br>
                 <div class="has-text-centered">
-                  <button class="button is-primary is-center" onclick="signupFormHandler()">Login</button>
+                  <button class="button is-primary is-center" onclick="loginFormHandler()">Login</button>
                 </div>
             </div>
           </div>
@@ -72,6 +72,11 @@
         navMenu.classList.toggle('is-active');
       });
     });
+   
+    function createAccount() {
+      window.location.href = "./createAccount.handlebars";
+    }
   </script>
+  <script src="./js/login.js"></script>
 </body>
 </html>

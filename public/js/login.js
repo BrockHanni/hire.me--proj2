@@ -5,24 +5,27 @@ const loginFormHandler = async (event) => {
   const email = document.querySelector('#emailInput').value.trim();
   const password = document.querySelector('#passwordInput').value.trim();
 
-  if (email && password) {
-    // Send a POST request to the API endpoint
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
+  if (!email || !password) {
+    // Display an error message to the user
+    alert('Please enter your email and password.');
+    return; // Stop the function execution if validation fails
+  }
 
-    if (response.ok) {
-      // If successful, redirect the browser to the profile page
+  // Send a POST request to the API endpoint
+  const response = await fetch('/api/users', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+    headers: { 'Content-Type': 'application/json' },
+  });
 
-      document.location.replace('./searchPage');
-
-    } else {
-      alert(response.statusText);
-    }
+  if (response.ok) {
+    // If successful, redirect the browser to the profile page
+    document.location.replace('/searchPage');
+  } else {
+    alert(response.statusText);
   }
 };
+
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
@@ -38,16 +41,16 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace ('/searchPage')
+      document.location.replace ('/')
     } else {
       alert(response.statusText);
     }
   }
 };
 
-document.addEventListener('DOMContentLoaded', function () {
-  const loginForm = document.getElementById('#loginform');
-  const signupForm = document.querySelector('.signup-form');
+//document
+  // .querySelector('.login-form')
+  // .addEventListener('submit', loginFormHandler);
 
   loginForm.addEventListener('submit', loginFormHandler);
   signupForm.addEventListener('click', signupFormHandler);
