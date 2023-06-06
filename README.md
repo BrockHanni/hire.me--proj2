@@ -19,7 +19,7 @@ This Job Search Application is a full-stack web application designed to assist u
 
 ## Overview
 
-Projects play a crucial role in the journey of becoming a full-stack web developer. This project is designed to showcase your collaborative skills and coding abilities, serving as a focal point of your portfolio. By creating a real-world full-stack application using the technologies and principles learned throughout the boot camp, you can demonstrate your capabilities to potential employers.
+Projects play a crucial role in the journey of becoming a full-stack web developer. This project is designed to showcase our collaborative skills and coding abilities, serving as a focal point of our portfolio. By creating a real-world full-stack application using the technologies and principles learned throughout the boot camp so far, we will demonstrate our capabilities.
 
 ## Project Requirements
 
