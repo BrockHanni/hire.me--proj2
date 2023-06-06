@@ -2,6 +2,15 @@
 <head>
   <title>hire.me</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+  <style>
+    .navbar-dropdown.is-primary {
+      background-color: hsl(171, 100%, 41%);
+    }
+
+    .navbar-link:hover {
+      background-color: hsl(171, 100%, 41%) !important;
+    }
+</style>
 </head>
 <body>
   <header class="hero is-primary">
@@ -16,14 +25,14 @@
               <span></span>
             </div>
           </div>
-          <div class="navbar-menu" id="navMenu">
-            <div class="navbar-end">
+          <div class="navbar-menu is-primary" id="navMenu">
+            <div class="navbar-end is-primary">
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">Menu</a>
-                <div class="navbar-dropdown">
-                  <a href="#" class="navbar-item">Build your Resume</a>
-                  <a href="#" class="navbar-item">Check out some example portfolios</a>
-                  <a class="button has-text-centered is-primary" href="./logout">Logout</a>
+                <div class="navbar-dropdown has-text-centered is-centered is-primary">
+                  <a href="#" class="navbar-item has-text-centered">Build your Resume</a>
+                  <a href="#" class="navbar-item has-text-centered">Check out some example portfolios</a>
+                  <a class="button has-text-centered is-primary" href="/">Logout</a>
                 </div>
               </div>
             </div>
