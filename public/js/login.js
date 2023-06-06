@@ -19,13 +19,15 @@ const loginFormHandler = async (event) => {
   });
 
   if (response.ok) {
-    // If successful, redirect the browser to the profile page
-    document.location.replace('/searchPage');
+    // If successful, redirect the browser to the search page
+    window.location.replace('./searchPage');
+    console.log("Logged In Successfully");
+    alert("Logged In Successfully");
   } else {
-    alert(response.statusText);
+    alert("There was an error logging in. Please try again.");
+    console.log("Error logging in")
   }
 };
-
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
@@ -41,16 +43,10 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace ('/')
+      document.location.replace ('/searchPage')
     } else {
       alert(response.statusText);
     }
   }
 };
 
-document
-  // .querySelector('.login-form')
-  // .addEventListener('submit', loginFormHandler);
-
-  loginForm.addEventListener('submit', loginFormHandler);
-  signupForm.addEventListener('click', signupFormHandler);
