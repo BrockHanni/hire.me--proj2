@@ -19,7 +19,7 @@
         }
     }
 
-    const url = `/search?Keyword=${searchQuery}&LocationName=${location}&MinimumSalary=${salary}`;
+    const url = `/search?Keyword=${searchQuery}&LocationName=${location}&SalaryBucket=${salary}`;
 
     try {
         const response = await fetch(url);

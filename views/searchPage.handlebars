@@ -70,7 +70,7 @@
           </div>
           <div class="field is-mobile is-centered">
             <div class="control has-text-centered">
-              <button class="button is-primary has-text-centered" id="searchButton" onclick="performSearch()">Search</button>
+              <button class="button is-primary has-text-centered" id="searchButton" onclick="performSearch">Search</button>
             </div>
           </div>
         </div>
@@ -156,6 +156,7 @@
   </section>
 
 <script src="./js/login.js"></script>
+<script src="./js/searchPage.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
       var burger = document.querySelector('.burger');
@@ -165,24 +166,7 @@
         navMenu.classList.toggle('is-active');
       });
     });
-    function performSearch() {
-      var searchInput = document.getElementById('searchInput').value;
-      var searchResults = document.getElementById('searchResults');
-      
-      // Perform search logic here
-      
-      // Example: Display search query in the results section
-      searchResults.innerHTML = `
-        <div class="column is-one-third">
-          <div class="card">
-            <div class="card-content">
-              <p>Search result for: ${searchInput}</p>
-            </div>
-          </div>
-        </div>
-        <!-- Repeat the above column for the remaining cards -->
-      `;
-    }
+    
 
 function findOutputForSlider(el) {
   var idVal = el.id;
