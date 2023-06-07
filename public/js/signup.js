@@ -48,6 +48,6 @@ const signupFormHandler = async (event) => {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  const loginForm = document.getElementById('loginform');
-  loginForm.addEventListener('click', loginFormHandler);
+  const signupForm = document.getElementById('signupbtn');
+  signupForm.addEventListener('click', signupFormHandler);
 });

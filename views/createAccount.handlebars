@@ -57,7 +57,7 @@
               <br>
               <br>
                 <div class="has-text-centered">
-                  <button class="button is-primary is-center signup-form">Create your login</button>
+                  <button  id="signupbtn" class="button is-primary is-center signup-form">Create your login</button>
                 </div>
             </div>
           </div>
@@ -66,61 +66,6 @@
     </div>
   </section>
 
-  <script src="../js/login.js"></script>
-<script>
-  const loginFormHandler = async (event) => {
-    event.preventDefault();
-
-    // Collect values from the login form
-    const email = document.querySelector('#emailInput').value.trim();
-    const password = document.querySelector('#passwordInput').value.trim();
-
-    if (email && password) {
-      // Send a POST request to the API endpoint
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-      if (response.ok) {
-        // If successful, redirect the browser to the profile page
-        document.location.replace('./searchPage');
-      } else {
-        alert(response.statusText);
-      }
-    }
-  };
-
-  const signupFormHandler = async (event) => {
-    event.preventDefault();
-
-    const email = document.querySelector('#emailInput').value.trim();
-    const password = document.querySelector('#passwordInput').value.trim();
-
-    if (email && password) {
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-      if (response.ok) {
-        document.location.replace('/searchPage');
-      } else {
-        alert(response.statusText);
-      }
-    }
-  };
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const loginForm = document.querySelector('.column.is-two-third');
-    const signupForm = document.querySelector('.button.signup-form');
-
-    loginForm.addEventListener('submit', loginFormHandler);
-    signupForm.addEventListener('click', signupFormHandler);
-  });
-</script>
-
+  <script src="../js/signup.js"></script>
 </body>
 </html>
