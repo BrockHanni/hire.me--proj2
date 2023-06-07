@@ -1,7 +1,7 @@
 {
-  "name": "hire.me",
+  "name": "crowd-funding",
   "version": "1.0.0",
-  "description": "Job search app",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

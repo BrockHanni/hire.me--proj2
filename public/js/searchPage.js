@@ -1,3 +1,12 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+const apiKey = process.env.GOOGLE_CLOUD_API_KEY;
+
+const talent = require('@google-cloud/talent');
+const client = new talent.TalentClient([
+    apiKey,
+]);
 
  async function performSearch() {
     //get search query from input box
@@ -14,48 +23,44 @@
 
     for (const checkbox of checkboxes) {
         if (checkbox.checked) {
-            salary = checkbox.value;
-            break;
+            const salary = checkbox.value;
         }
     }
 
-    const url = `/search?Keyword=${searchQuery}&LocationName=${location}&SalaryBucket=${salary}`;
+    //Perform search
 
-    try {
-        const response = await fetch(url);
+    const results = await client.searchJobs({
+        query : searchQuery,
+        location : location,
+        salary : salary,
+    });
+
+    //Display results
+
+    await results.json()
+    .then(results => {
+        const searchResults = document.getElementById('searchResults');
+        const resultCards = [];
+
+        const cards = results.map(result => {
+            const jobTitle = result.jobTitle;
+            const location = result.location;
+            const salary = result.salary;
         
-        if (!response.ok) {
-          throw new Error(`API request failed with status ${response.status}`);
-        }
+            return (
+                <div className="card">
+                    <h4 className="title">{jobTitle}</h4>
+                    <p className="location">{location}</p>
+                    <p className="salary">{salary}</p>
+                </div>
+            );
+        });
         
-        const data = await response.json();
-        displaySearchResults(data);
-      } catch (error) {
-        console.error('Error searching jobs:', error);
-        }
-    }
+        searchResults.innerHTML = cards.join('');
 
-
-function displaySearchResults(results) {
-
-    const searchResults = document.getElementById('searchResults');
-    searchResults.innerHTML = '';
-
-    for (const result of results) {
-        const jobTitle = result.searchInput;
-        const location = result.location;
-        const salary = result.salary;
         
-        const card = document.getElementsByClassName('card');
-        card.innerHTML = `
-                    <h4 className="title">${jobTitle}</h4>
-                    <p className="location">${location}</p>
-                    <p className="salary">${salary}</p>
-                `;
-        searchResults.appendChild(card);
-    }
+    });
 }
-    
 
 const searchButton = document.getElementById('searchButton');
 searchButton.addEventListener('click', performSearch);

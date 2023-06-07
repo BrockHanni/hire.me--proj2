@@ -5,27 +5,22 @@ const loginFormHandler = async (event) => {
   const email = document.querySelector('#emailInput').value.trim();
   const password = document.querySelector('#passwordInput').value.trim();
 
-  if (!email || !password) {
-    // Display an error message to the user
-    alert('Please enter your email and password.');
-    return; // Stop the function execution if validation fails
-  }
+  if (email && password) {
+    // Send a POST request to the API endpoint
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-  // Send a POST request to the API endpoint
-  const response = await fetch('/api/users', {
-    method: 'POST',
-    body: JSON.stringify({ email, password }),
-    headers: { 'Content-Type': 'application/json' },
-  });
+    if (response.ok) {
+      // If successful, redirect the browser to the profile page
 
-  if (response.ok) {
-    // If successful, redirect the browser to the search page
-    window.location.replace('./searchPage');
-    console.log("Logged In Successfully");
-    alert("Logged In Successfully");
-  } else {
-    alert("There was an error logging in. Please try again.");
-    console.log("Error logging in")
+      document.location.replace('./searchPage');
+
+    } else {
+      alert(response.statusText);
+    }
   }
 };
 
@@ -50,3 +45,10 @@ const signupFormHandler = async (event) => {
   }
 };
 
+document.addEventListener('DOMContentLoaded', function () {
+  const loginForm = document.getElementById('#loginform');
+  const signupForm = document.querySelector('.signup-form');
+
+  loginForm.addEventListener('submit', loginFormHandler);
+  signupForm.addEventListener('click', signupFormHandler);
+});
