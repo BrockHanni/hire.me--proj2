@@ -19,7 +19,7 @@
         }
     }
 
-    const url = `/search?Keyword=${searchQuery}&LocationName=${location}&SalaryBucket=${salary}`;
+    const url = `/api/Search?Keyword=${searchQuery}&LocationName=${location}&SalaryBucket=${salary}`;
 
     try {
         const response = await fetch(url);
@@ -29,6 +29,7 @@
         }
         
         const data = await response.json();
+        //const resultItems = data.resultItems;
         displaySearchResults(data);
       } catch (error) {
         console.error('Error searching jobs:', error);
@@ -41,12 +42,15 @@ function displaySearchResults(results) {
     const searchResults = document.getElementById('searchResults');
     searchResults.innerHTML = '';
 
-    for (const result of results) {
-        const jobTitle = result.searchInput;
+    const resultItems = results.SearchResult.SearchResultItems;
+
+    for (const result of resultItems) {
+        const jobTitle = result.searchQuery;
         const location = result.location;
         const salary = result.salary;
         
-        const card = document.getElementsByClassName('card');
+        const card = document.createElement('div');
+        card.className = 'card';
         card.innerHTML = `
                     <h4 className="title">${jobTitle}</h4>
                     <p className="location">${location}</p>

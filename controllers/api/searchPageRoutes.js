@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const apiKey = process.env.USA_JOBS_API_KEY;
 const http = require('http');
+const request = require('request');
 
 router.get('/', (req, res) => {
   try {
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
     const userAgent = 'gibby.eidem@gmail.com';
     const authKey = apiKey;
 
-    const url = `https://${host}/api/search?Keyword=${searchQuery}&LocationName=${location}&SalaryBucket=${salary}`;
+    const url = `https://${host}/api/Search?Keyword=${searchQuery}&LocationName=${location}&SalaryBucket=${salary}`;
 
     const options = {
       url: url,
