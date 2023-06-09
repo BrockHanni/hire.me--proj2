@@ -23,32 +23,19 @@ const requestBody = {
     salary: salary,
     searchQuery: searchQuery
 }
+const options = {
+    method: 'POST',
+    headers: {
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(requestBody)
+  };
 
-    const authResponse = await fetch('/api/search', requestBody);
+    const authResponse = await fetch('/api/search', options);
     if (!authResponse.ok) {
         throw new Error(`API request failed with status ${authResponse.status}`);
     }
-   // const { host, userAgent, authKey } = await authResponse.json();
-    //get search query from input box
-
-    // const url = `https://${host}/api/Search?Keyword=${searchQuery}&LocationName=${location}&SalaryBucket=${salary}`;
-
-    //     const response = await fetch(url , {
-    //     method: 'GET',
-    //     headers: {
-    //         'Host': host,
-    //         'User-Agent': userAgent,
-    //         'Authorization-Key': authKey
-    //       }
-//}
-//);
-        
-        // if (!response.ok) {
-        //   throw new Error(`Job search request failed with status ${response.status}`);
-        // }
-
-
-        
+  
         const data = await authResponse.json();
         //const resultItems = data.resultItems;
         displaySearchResults(data);
@@ -66,16 +53,16 @@ function displaySearchResults(results) {
     const resultItems = results.SearchResult.SearchResultItems;
 
     for (const result of resultItems) {
-        const jobTitle = result.searchQuery;
-        const location = result.location;
-        const salary = result.salary;
+        const jobTitle = result.MatchedObjectDescriptor.PositionTitle;
+        const location = result.MatchedObjectDescriptor.PositionLocation.LocationName;
+        const URI = result.MatchedObjectDescriptor.ApplyURI;
         
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
                     <h4 className="title">${jobTitle}</h4>
                     <p className="location">${location}</p>
-                    <p className="salary">${salary}</p>
+                    <a href=${URI} className="salary">${URI}</a>
                 `;
         searchResults.appendChild(card);
     }

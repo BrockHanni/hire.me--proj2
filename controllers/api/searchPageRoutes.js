@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
-const request = require('request');
+const fetch = require('node-fetch');
 
 const apiKey = process.env.USA_JOBS_API_KEY;
 
-router.get('/', (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { searchQuery, location, salary } = req.body;
 
@@ -25,17 +25,13 @@ router.get('/', (req, res) => {
       }
     };
 
-    request(options, (error, body) => {
-      if (error) {
-        console.error('Error searching jobs:', error);
-        res.sendStatus(500);
-        return;
-      }
+    const fetchResponse = await fetch(url, options);
 
-      const data = JSON.parse(body);
-      console.log(data);
-      res.json(data);
-    });
+    if (!fetchResponse.ok) {
+      throw new Error(`API request failed with status ${fetchResponse.status}`);
+    }
+    const data = await fetchResponse.json();
+    res.json(data);
   } catch (error) {
     console.error('Error searching jobs:', error);
     res.sendStatus(500);
