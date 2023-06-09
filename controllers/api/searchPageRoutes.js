@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const apiKey = process.env.USA_JOBS_API_KEY;
-const http = require('http');
+require('dotenv').config();
 const request = require('request');
+
+const apiKey = process.env.USA_JOBS_API_KEY;
 
 router.get('/', (req, res) => {
   try {
-    const { searchQuery, location, salary } = req.query;
+    const { searchQuery, location, salary } = req.body;
 
     const host = 'data.usajobs.gov';
     const userAgent = 'gibby.eidem@gmail.com';
@@ -24,7 +25,7 @@ router.get('/', (req, res) => {
       }
     };
 
-    request(options, (error, response, body) => {
+    request(options, (error, body) => {
       if (error) {
         console.error('Error searching jobs:', error);
         res.sendStatus(500);
@@ -32,6 +33,7 @@ router.get('/', (req, res) => {
       }
 
       const data = JSON.parse(body);
+      console.log(data);
       res.json(data);
     });
   } catch (error) {
