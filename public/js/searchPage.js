@@ -1,3 +1,12 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+const apiKey = process.env.GOOGLE_CLOUD_API_KEY;
+
+const talent = require('@google-cloud/talent');
+const client = new talent.TalentClient([
+    apiKey,
+]);
 const searchButton = document.getElementById('searchButton');
 searchButton.addEventListener('click', async () => {
 try {
@@ -50,26 +59,27 @@ function displaySearchResults(results) {
     const searchResults = document.getElementById('searchResults');
     searchResults.innerHTML = '';
 
-    const resultItems = results.SearchResult.SearchResultItems;
-
-    for (const result of resultItems) {
-        const jobTitle = result.MatchedObjectDescriptor.PositionTitle;
-        const location = result.MatchedObjectDescriptor.PositionLocation.LocationName;
-        const URI = result.MatchedObjectDescriptor.ApplyURI;
+        const cards = results.map(result => {
+            const jobTitle = result.jobTitle;
+            const location = result.location;
+            const salary = result.salary;
         
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-                    <h4 className="title">${jobTitle}</h4>
-                    <p className="location">${location}</p>
-                    <a href=${URI} className="salary">${URI}</a>
-                `;
-        searchResults.appendChild(card);
-    }
+            return (
+                <div className="card">
+                    <h4 className="title">{jobTitle}</h4>
+                    <p className="location">{location}</p>
+                    <p className="salary">{salary}</p>
+                </div>
+            );
+        });
+        
+        searchResults.innerHTML = cards.join('');
+
+        
+    });
 }
-    
 
-
-
+const searchButton = document.getElementById('searchButton');
+searchButton.addEventListener('click', performSearch);
 
 

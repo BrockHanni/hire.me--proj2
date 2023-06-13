@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').config();
 const fetch = require('node-fetch');
-
+const http = require('http');
 const apiKey = process.env.USA_JOBS_API_KEY;
 
 router.post('/', async (req, res) => {
