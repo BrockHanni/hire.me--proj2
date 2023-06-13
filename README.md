@@ -107,7 +107,7 @@ hire.me--proj2/
 ├── controllers/
 │   ├── api/
 │     ├── index.js/
-│     ├── projectRoutes.js/
+│     ├── searchPageRoutes.js/
 │     └── userRoutes.js/
 │   ├── homeRoutes.js/
 │   └── index.js/
@@ -120,7 +120,7 @@ hire.me--proj2/
 │   └── searchPage.html/
 ├── models/
 │   ├── index.js/
-│   ├── Project.js/
+│   ├── Jobs.js/
 │   └── User.js/
 ├── node_modules/
 ├── public/
@@ -139,7 +139,7 @@ hire.me--proj2/
 │     ├── main.handlebars/
 │   ├── homepage.handlebars/
 │   ├── login.handlebars
-│   └── project.handlebars/
+│   └── searchPage.handlebars/
 ├── .env/
 ├── package-lock.json/
 ├── package.json
@@ -150,7 +150,7 @@ hire.me--proj2/
 
 ## Deployment
 
-The application is deployed using Heroku. To access the deployed version, visit {HEROKU LINK}.
+The application is deployed using Heroku. To access the deployed version, visit https://lit-plateau-73143.herokuapp.com/
 
 ## Code Quality
 
